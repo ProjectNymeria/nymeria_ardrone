@@ -1,9 +1,10 @@
 /**********************************************************************
-     Author:   Grey Wind
-     Date:     26/10/2014
-     Version:  v0.1.0
-     Details:
-               26/10-v0.1.0: Created basic outline for UDP classes.
+*     Author:   Grey Wind
+*     Date:     26/10/2014
+*     Version:  v0.1.0
+*     Details:
+*               26/10-v0.1.0: Created basic outline for UDP
+* classes.
 **********************************************************************/
 #ifndef _UDP_WRAPPER_H
 #define _UDP_WRAPPER_H
@@ -45,53 +46,53 @@ typedef struct in_addr IN_ADDR;
 static void udp_init(void);
 static void udp_end(void);
 
-class UDPClient{
-private: 
-    SOCKET            m_socket;
-    int               m_port;
-    std::string       m_addr;
-    struct addrinfo*  m_addrinfo;
-    bool              m_server_knows_me;
+class UDPClient {
+private:
+SOCKET m_socket;
+int m_port;
+std::string m_addr;
+struct addrinfo *  m_addrinfo;
+bool m_server_knows_me;
 
 public:
-    //Constructor&Destructor
-    UDPClient(const std::string& addr, int port);
-    ~UDPClient();
+//Constructor&Destructor
+UDPClient(const std::string& addr, int port);
+~UDPClient();
 
-    //Getters
-    int          get_socket() const;
-    int          get_port() const;
-    std::string  get_addr() const;
+//Getters
+int          get_socket() const;
+int          get_port() const;
+std::string  get_addr() const;
 
-    //Methods
-    int          send(const char *msg, size_t size);
-    int          recv(char *msg, size_t max_size);
+//Methods
+int          send(const char *msg, size_t size);
+int          recv(char *msg, size_t max_size);
 };
 
-class UDPServer{
+class UDPServer {
 private:
-    SOCKET            m_socket;
-    int               m_port;
-    std::string       m_addr;
-    struct addrinfo*  m_addrinfo;
-    bool              m_client_is_known;
-    SOCKADDR_IN       m_client;
-    int               m_fromsize;
+SOCKET m_socket;
+int m_port;
+std::string m_addr;
+struct addrinfo *  m_addrinfo;
+bool m_client_is_known;
+SOCKADDR_IN m_client;
+int m_fromsize;
 
 public:
-    //Constructor&Destructor
-    UDPServer(const std::string& addr, int port);
-    ~UDPServer();
+//Constructor&Destructor
+UDPServer(const std::string& addr, int port);
+~UDPServer();
 
-    //Getters
-    int          get_socket() const;
-    int          get_port() const;
-    std::string  get_addr() const;
+//Getters
+int          get_socket() const;
+int          get_port() const;
+std::string  get_addr() const;
 
-    //Methods
-    int          recv(char* msg, size_t max_size);
-    int          send(const char* msg, size_t size);
-    int          send(const char* msg, size_t size, const std::string& addr, int port);
+//Methods
+int          recv(char * msg, size_t max_size);
+int          send(const char * msg, size_t size);
+int          send(const char * msg, size_t size, const std::string& addr, int port);
 };
 
 #endif  //_UDP_WRAPPER_H
